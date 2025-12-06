@@ -1,7 +1,55 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {},
+    "StartArknights": {
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.hypergryph.arknights"
+            }
+        },
+        "post_wait_freezes": 3000,
+        "next": [
+            "StartUp"
+        ]
+    },
+    "StartUp": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "start.png",
+                "roi": [
+                    600,
+                    640,
+                    80,
+                    80
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 3000,
+        "next": [
+            "StartUp2"
+        ]
+    },
+    "StartUp2": {
+        "rate_limit": 2000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "开始唤醒",
+                "roi": [
+                    570,
+                    480,
+                    120,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
     "MyTask4": {
         "recognition": "Custom",
         "custom_recognition": "my_reco_222",
